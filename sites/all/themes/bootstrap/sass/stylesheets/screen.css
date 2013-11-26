@@ -1,0 +1,385 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 8, ../sass/screen.scss */
+html, body {
+  font-family: "PT Sans", sans-serif;
+  background: transparent url(../../images/bg_all.png) scroll 0 0 repeat;
+}
+
+/* line 13, ../sass/screen.scss */
+h1, h2, h3, h4, h5, h6, span, p, a {
+  font-family: "PT Sans", sans-serif;
+}
+
+/* line 18, ../sass/screen.scss */
+.front .page-header {
+  display: none;
+}
+
+/* line 23, ../sass/screen.scss */
+.page-bottom {
+  background: transparent url(../../images/bg.png) scroll 0 0 repeat;
+  padding: 20px 0 0 0;
+  margin-top: 20px;
+  border-bottom: 20px solid black;
+  border-top: 5px solid #3276b1;
+}
+/* line 29, ../sass/screen.scss */
+.page-bottom .block {
+  color: white;
+  background: url(../../images/footer_line.png) repeat-x scroll 0 100% transparent;
+  padding-bottom: 20px;
+}
+/* line 33, ../sass/screen.scss */
+.page-bottom .block .stream {
+  font: "PT Sans", sans-serif !important;
+}
+/* line 38, ../sass/screen.scss */
+.page-bottom #block-block-7 .container {
+  margin-left: -15px;
+}
+/* line 40, ../sass/screen.scss */
+.page-bottom #block-block-7 .container img {
+  border-radius: 5px;
+}
+/* line 43, ../sass/screen.scss */
+.page-bottom #block-block-7 .container img:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+/* line 47, ../sass/screen.scss */
+.page-bottom #block-block-7 .btn-primary {
+  margin-top: 20px;
+}
+/* line 51, ../sass/screen.scss */
+.page-bottom #block-block-8 {
+  background: none;
+  margin-top: 20px;
+}
+/* line 55, ../sass/screen.scss */
+.page-bottom .block-title {
+  background: url(../../images/footer_line.png) repeat-x scroll 0 100% transparent;
+  padding-bottom: 20px;
+}
+/* line 59, ../sass/screen.scss */
+.page-bottom #block-twitter-block-1 {
+  padding-bottom: 0;
+}
+/* line 61, ../sass/screen.scss */
+.page-bottom #block-twitter-block-1 img.avatar:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* line 67, ../sass/screen.scss */
+.main-container {
+  margin-top: -20px;
+  padding-top: 20px;
+  background: transparent url(../../images/line.png) scroll 0 0 repeat-x;
+}
+
+/* line 73, ../sass/screen.scss */
+#block-block-6 {
+  padding-bottom: 20px;
+}
+/* line 76, ../sass/screen.scss */
+#block-block-6 .col-md-4 .img-circle {
+  margin-top: 50px;
+}
+/* line 79, ../sass/screen.scss */
+#block-block-6 .col-md-4 .img-circle:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 85, ../sass/screen.scss */
+#block-views-news-block-1 {
+  border-top: 1px solid #e5e5e5;
+  background: transparent url(../../images/line.png) scroll 0 0 repeat-x;
+  padding-top: 30px;
+  text-align: center;
+}
+/* line 90, ../sass/screen.scss */
+#block-views-news-block-1 .views-field-body {
+  min-height: 85px;
+  text-align: justify;
+}
+/* line 95, ../sass/screen.scss */
+#block-views-news-block-1 .views-field-field-news-mage .img-circle {
+  margin: 0 auto;
+}
+/* line 98, ../sass/screen.scss */
+#block-views-news-block-1 .views-field-field-news-mage .img-circle:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 105, ../sass/screen.scss */
+#block-views-blog-block .views-row {
+  margin-bottom: 10px;
+}
+
+/* line 111, ../sass/screen.scss */
+.page-news .page-header, .page-blog .page-header, .page-gallery .page-header, .page-node-10 .page-header, .page-progs .page-header, .node-type-gallery .page-header, .page-guest-book .page-header, .page-portfolio .page-header {
+  display: none;
+}
+
+/* line 118, ../sass/screen.scss */
+#navbar .navbar-collapse a:hover, #navbar .navbar-collapse .active-trail {
+  color: #F94B19;
+}
+
+/* line 125, ../sass/screen.scss */
+.page-node-35 #carousel-bootstrap {
+  margin: 0 0 20px 0;
+}
+/* line 127, ../sass/screen.scss */
+.page-node-35 #carousel-bootstrap img {
+  height: 500px;
+  margin: 20px auto;
+}
+
+/* line 135, ../sass/screen.scss */
+#webform-client-form-10 .form-submit {
+  margin-top: 20px;
+}
+/* line 138, ../sass/screen.scss */
+#webform-client-form-10 textarea {
+  resize: none;
+}
+
+/* line 144, ../sass/screen.scss */
+.page-gallery .view-gallery {
+  position: relative;
+  text-align: center;
+  padding-bottom: 20px;
+}
+/* line 148, ../sass/screen.scss */
+.page-gallery .view-gallery .views_slideshow_cycle_main {
+  display: inline-block;
+}
+/* line 152, ../sass/screen.scss */
+.page-gallery .view-gallery .views_slideshow_cycle_main .views-slideshow-cycle-main-frame .views-slideshow-cycle-main-frame-row-item img {
+  border: 10px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+/* line 159, ../sass/screen.scss */
+.page-gallery .view-gallery .views-slideshow-controls-top {
+  width: 362px;
+  float: left;
+  background-color: #e7e7e7;
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+}
+/* line 167, ../sass/screen.scss */
+.page-gallery .view-gallery .views-slideshow-controls-top .views-slideshow-pager-fields .views-slideshow-pager-field-item img {
+  float: left;
+  cursor: pointer;
+  margin: 5px;
+  border: 3px solid white;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+/* line 174, ../sass/screen.scss */
+.page-gallery .view-gallery .views-slideshow-controls-top .views-slideshow-pager-fields .views-slideshow-pager-field-item img:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 184, ../sass/screen.scss */
+.view-blog .node-teaser, .view-news .node-teaser, .view-progs .node-teaser, .view-portfolio .node-teaser {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  padding: 5px 10px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+/* line 191, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-news-mage img, .view-blog .node-teaser .field-name-field-portfolio-image img, .view-news .node-teaser .field-name-field-news-mage img, .view-news .node-teaser .field-name-field-portfolio-image img, .view-progs .node-teaser .field-name-field-news-mage img, .view-progs .node-teaser .field-name-field-portfolio-image img, .view-portfolio .node-teaser .field-name-field-news-mage img, .view-portfolio .node-teaser .field-name-field-portfolio-image img {
+  float: left;
+  margin: 0 20px 20px 0;
+}
+/* line 195, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-news-mage .img-circle:hover, .view-blog .node-teaser .field-name-field-portfolio-image .img-circle:hover, .view-news .node-teaser .field-name-field-news-mage .img-circle:hover, .view-news .node-teaser .field-name-field-portfolio-image .img-circle:hover, .view-progs .node-teaser .field-name-field-news-mage .img-circle:hover, .view-progs .node-teaser .field-name-field-portfolio-image .img-circle:hover, .view-portfolio .node-teaser .field-name-field-news-mage .img-circle:hover, .view-portfolio .node-teaser .field-name-field-portfolio-image .img-circle:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+/* line 199, ../sass/screen.scss */
+.view-blog .node-teaser .node-readmore, .view-news .node-teaser .node-readmore, .view-progs .node-teaser .node-readmore, .view-portfolio .node-teaser .node-readmore {
+  padding-left: 0;
+  padding-top: 5px;
+}
+/* line 203, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-blog-tags, .view-news .node-teaser .field-name-field-blog-tags, .view-progs .node-teaser .field-name-field-blog-tags, .view-portfolio .node-teaser .field-name-field-blog-tags {
+  clear: both;
+  display: inline-block;
+}
+/* line 206, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-blog-tags .field-item, .view-news .node-teaser .field-name-field-blog-tags .field-item, .view-progs .node-teaser .field-name-field-blog-tags .field-item, .view-portfolio .node-teaser .field-name-field-blog-tags .field-item {
+  float: left;
+  margin-right: 5px;
+}
+/* line 210, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-blog-tags .field-item:after, .view-news .node-teaser .field-name-field-blog-tags .field-item:after, .view-progs .node-teaser .field-name-field-blog-tags .field-item:after, .view-portfolio .node-teaser .field-name-field-blog-tags .field-item:after {
+  content: ',';
+}
+/* line 213, ../sass/screen.scss */
+.view-blog .node-teaser .field-name-field-blog-tags .field-item:last-child:after, .view-news .node-teaser .field-name-field-blog-tags .field-item:last-child:after, .view-progs .node-teaser .field-name-field-blog-tags .field-item:last-child:after, .view-portfolio .node-teaser .field-name-field-blog-tags .field-item:last-child:after {
+  content: '';
+}
+/* line 217, ../sass/screen.scss */
+.view-blog .node-teaser .glyphicon-leaf, .view-news .node-teaser .glyphicon-leaf, .view-progs .node-teaser .glyphicon-leaf, .view-portfolio .node-teaser .glyphicon-leaf {
+  top: -2px;
+}
+/* line 222, ../sass/screen.scss */
+.view-blog .field-type-image img:hover, .view-news .field-type-image img:hover, .view-progs .field-type-image img:hover, .view-portfolio .field-type-image img:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 229, ../sass/screen.scss */
+.comment-form .filter-wrapper {
+  display: none;
+}
+/* line 233, ../sass/screen.scss */
+.comment-form #comment-body-add-more-wrapper .grippie {
+  display: none;
+}
+/* line 236, ../sass/screen.scss */
+.comment-form #comment-body-add-more-wrapper textarea {
+  resize: none;
+}
+
+/* line 244, ../sass/screen.scss */
+.view-progs .field-name-body dl, .node-type-progs .field-name-body dl {
+  margin-bottom: 0;
+}
+
+/* line 250, ../sass/screen.scss */
+#block-block-9 {
+  padding: 0 10px 10px 10px;
+  background: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  margin-top: 20px;
+}
+/* line 255, ../sass/screen.scss */
+#block-block-9 .block-title {
+  margin: 10px -10px;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 0 0 10px 10px;
+}
+
+/* line 262, ../sass/screen.scss */
+.footer {
+  border: none;
+  margin-top: 0;
+  margin-top: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* line 268, ../sass/screen.scss */
+.footer #block-block-5 {
+  background: none;
+  padding-bottom: 0;
+  position: absolute;
+  color: #a0a0a0;
+}
+
+/* line 277, ../sass/screen.scss */
+.navbar .logo {
+  margin: 0px;
+  margin-top: 2px;
+}
+
+/* line 284, ../sass/screen.scss */
+.node-news .field-name-field-news-mage {
+  float: left;
+  margin: 0 20px 20px 0;
+}
+/* line 288, ../sass/screen.scss */
+.node-news .field-name-field-news-mage:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+/* line 291, ../sass/screen.scss */
+.node-news #comments {
+  clear: both;
+}
+
+/* line 297, ../sass/screen.scss */
+.node-gallery .field-name-field-gallery-image img:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 303, ../sass/screen.scss */
+.view-guest-book .page-header {
+  display: block;
+}
+/* line 306, ../sass/screen.scss */
+.view-guest-book .row {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  padding: 5px 10px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+/* line 312, ../sass/screen.scss */
+.view-guest-book .row .views-field-body {
+  clear: both;
+}
+/* line 314, ../sass/screen.scss */
+.view-guest-book .row .views-field-body p {
+  font-style: italic;
+  padding: 0.5em 0px 0.5em 10px;
+  display: inline;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  float: left;
+}
+/* line 324, ../sass/screen.scss */
+.view-guest-book .row .views-field-body:before {
+  color: #bbb;
+  content: "\201C";
+  font-size: 34px;
+  line-height: 0.1em;
+  margin-top: 20px;
+  float: left;
+  display: inline;
+  font-style: italic;
+}
+/* line 335, ../sass/screen.scss */
+.view-guest-book .row .views-field-body:after {
+  color: #bbb;
+  content: "\201D";
+  font-size: 34px;
+  line-height: 0.1em;
+  margin-top: 20px;
+  display: inline;
+  font-style: italic;
+  float: left;
+  clear: right;
+}
+/* line 347, ../sass/screen.scss */
+.view-guest-book .row .views-field-title {
+  font-weight: bold;
+}
+/* line 351, ../sass/screen.scss */
+.view-guest-book .row blockquote {
+  margin-top: 10px;
+}
+/* line 353, ../sass/screen.scss */
+.view-guest-book .row blockquote small {
+  clear: both;
+}
+/* line 355, ../sass/screen.scss */
+.view-guest-book .row blockquote small .views-field {
+  float: left;
+  margin-right: 5px;
+}
+/* line 360, ../sass/screen.scss */
+.view-guest-book .row blockquote small:before {
+  float: left;
+}
+
+/* line 367, ../sass/screen.scss */
+#comments {
+  margin-top: 20px;
+}
+/* line 369, ../sass/screen.scss */
+#comments .title, #comments #edit-author--2 {
+  display: none;
+}
