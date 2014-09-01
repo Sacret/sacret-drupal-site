@@ -1,0 +1,5 @@
+name = "Wysiwyg Pre Element Fix"
+description = "Wysiwyg editor plugin that fixes the behavior of &lt;pre> elements in TinyMCE."
+dependencies[] = wysiwyg
+package = "User interface"
+core = 7.x

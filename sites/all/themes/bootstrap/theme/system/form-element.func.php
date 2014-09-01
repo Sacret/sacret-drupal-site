@@ -9,6 +9,8 @@
  */
 function bootstrap_form_element(&$variables) {
   $element = &$variables['element'];
+  $is_checkbox = FALSE;
+  $is_radio = FALSE;
 
   // This function is invoked as theme wrapper, but the rendered form element
   // may not necessarily have been processed by form_builder().
@@ -50,12 +52,27 @@ function bootstrap_form_element(&$variables) {
   if (isset($element['#type'])) {
     if ($element['#type'] == "radio") {
       $attributes['class'][] = 'radio';
+      $is_radio = TRUE;
     }
     elseif ($element['#type'] == "checkbox") {
       $attributes['class'][] = 'checkbox';
+      $is_checkbox = TRUE;
     }
     else {
       $attributes['class'][] = 'form-group';
+    }
+  }
+
+  $description = FALSE;
+  $tooltip = FALSE;
+  // Convert some descriptions to tooltips.
+  // @see bootstrap_tooltip_descriptions setting in _bootstrap_settings_form()
+  if (!empty($element['#description'])) {
+    $description = $element['#description'];
+    if (theme_get_setting('bootstrap_tooltip_enabled') && theme_get_setting('bootstrap_tooltip_descriptions') && $description === strip_tags($description) && strlen($description) <= 200) {
+      $tooltip = TRUE;
+      $attributes['data-toggle'] = 'tooltip';
+      $attributes['title'] = $description;
     }
   }
 
@@ -90,7 +107,12 @@ function bootstrap_form_element(&$variables) {
       break;
 
     case 'after':
-      $variables['#children'] = ' ' . $prefix . $element['#children'] . $suffix;
+      if ($is_radio || $is_checkbox) {
+        $output .= ' ' . $prefix . $element['#children'] . $suffix;
+      }
+      else {
+        $variables['#children'] = ' ' . $prefix . $element['#children'] . $suffix;
+      }
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
       break;
 
@@ -101,7 +123,7 @@ function bootstrap_form_element(&$variables) {
       break;
   }
 
-  if (!empty($element['#description'])) {
+  if ($description && !$tooltip) {
     $output .= '<p class="help-block">' . $element['#description'] . "</p>\n";
   }
 
@@ -109,4 +131,3 @@ function bootstrap_form_element(&$variables) {
 
   return $output;
 }
-

@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * wysiwyg_preelementfix is an plugin for wysiwyg editors
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function wysiwyg_preelementfix_help($path, $arg) {
+  if ($path == 'admin/modules#description') {
+    return t('Enables the TinyMCE preelementfix plugin in Wysiwyg editor.');
+  }
+}
+
+/**
+ * Implementation of hook_wysiwyg_plugin().
+ */
+function wysiwyg_preelementfix_wysiwyg_plugin($editor, $version) {
+  switch ($editor) {
+    case 'tinymce':
+      if ($path = wysiwyg_preelementfix_library_path()) {
+        return array(
+          'preelementfix' => array(
+            'filename' => 'editor_plugin.js',
+            'path' => $path,
+            'buttons' => array('preelementfix' => t('Pre element fix')),
+            'url' => 'http://sourceforge.net/tracker/index.php?func=detail&aid=2671750&group_id=103281&atid=738747',
+            'load' => TRUE,
+          ),
+        );
+      }
+  }
+}
+
+/**
+ * Includes a required library file.
+ */
+function wysiwyg_preelementfix_library_path() {
+  $file = 'editor_plugin.js';
+  $library = 'preelementfix';
+  if (module_exists('libraries') && file_exists(libraries_get_path($library) . "/$file")) {
+    return libraries_get_path($library) . "/$file";
+  }
+  else {
+    $paths = array(
+      drupal_get_path('module', 'wysiwyg_preelementfix'),
+      drupal_get_path('module', 'wysiwyg_preelementfix') . "/libraries",
+      drupal_get_path('module', 'wysiwyg_preelementfix') . '/tinymce/' . $library,
+      variable_get('file_public_path', conf_path() . '/files') . '/' . $library,
+      'profiles/' . variable_get('install_profile', 'default') . '/libraries',
+      'profiles/' . variable_get('install_profile', 'default') . '/libraries/' . $library,
+      'sites/all/libraries',
+      'sites/all/libraries/' . $library,
+    );
+    foreach ($paths as $library_path) {
+      $path = $library_path . "/$file";
+      if (file_exists($path)) {
+        return $library_path;
+      }
+    }
+  }
+  return FALSE;
+}
+
