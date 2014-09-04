@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Implements hook_webform_submission_insert()
+ */
+
+function sacret_guest_book_webform_submission_insert($node, $submission) {
+  if ($submission->data[4]['value'][0] == 1) {
+    global $user;
+    $new_node = new StdClass();
+    $new_node->type = 'guest_book';
+    $new_node->title = $submission->data[1]['value'][0];
+    $new_node->language = 'und';
+    $new_node->status = 0;
+    $new_node->uid = $user->uid;
+    $new_node->body['und'][0]['value'] = $submission->data[3]['value'][0];
+    $new_node->field_guestbook_email['und'][0]['value'] = $submission->data[2]['value'][0];
+    $new_node->field_guestbook_city['und'][0]['value'] = $submission->data[5]['value'][0];
+    $new_node->field_guestbook_homepage['und'][0]['value'] = $submission->data[6]['value'][0];
+    $new_node->field_guestbook_date['und'][0]['value'] = date('Y-m-d H:i:s');
+    $new_node = node_submit($new_node);
+    node_save($new_node);
+  }
+}

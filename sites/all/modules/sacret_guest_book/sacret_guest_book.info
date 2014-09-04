@@ -1,0 +1,5 @@
+name = "Sacret guest book"
+description = "Creates guest book nodes"
+core = 7.x
+version = 7.x-1.0
+php = 5.1

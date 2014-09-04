@@ -78,6 +78,12 @@
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
       <?php print render($page['content']); ?>
+      <?php //if (!empty($page['content_left']) && !empty($page['content_right'])): ?>
+        <div class="row content-bottom">
+          <div class="col-md-6 col-xs-12"><?php print render($page['content_left']); ?></div>
+          <div class="col-md-6 col-xs-12"><?php print render($page['content_right']); ?></div>
+        </div>
+      <?php //endif; ?>
     </section>
 
     <?php if (!empty($page['sidebar_second'])): ?>
@@ -91,9 +97,9 @@
 <div class="page-bottom">  
   <div class="container">
     <div class="row">
-      <div class="col-md-4"><?php print render($page['footer1']); ?></div>
-      <div class="col-md-4"><?php print render($page['footer2']); ?></div>
-      <div class="col-md-4"><?php print render($page['footer3']); ?></div>
+      <div class="col-md-4 col-xs-12"><?php print render($page['footer1']); ?></div>
+      <div class="col-md-4 col-xs-12"><?php print render($page['footer2']); ?></div>
+      <div class="col-md-4 col-xs-12"><?php print render($page['footer3']); ?></div>
     </div>
   </div>
   <?php if (!empty($page['footer'])): ?>

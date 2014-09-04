@@ -41,7 +41,6 @@ h1, h2, h3, h4, h5, h6, span, p, a {
   }  
   #block-block-7 {
     .col-md-2 {
-      @include img-hover();
       margin: 5px 0;
       img {
         border-radius: 5px;
@@ -61,9 +60,6 @@ h1, h2, h3, h4, h5, h6, span, p, a {
   }
   #block-twitter-block-1 {
     padding-bottom: 0;
-    .header {
-      @include img-hover();
-    }
   }
 }
 
@@ -88,19 +84,23 @@ h1, h2, h3, h4, h5, h6, span, p, a {
   background: transparent url(../images/line.png) scroll 0 0 repeat-x;
   padding-top: 30px;
   text-align: center;
-  .views-field-body {
-    min-height: 85px;
-    text-align: justify;
-  }  
-  .views-field-field-news-mage {
-    @include img-hover();
-    margin-top: 10px;
-    .img-circle {
-      margin: 0 auto;
+  .view-news {
+    background: transparent url(../images/line.png) scroll bottom repeat-x;
+    padding-bottom: 30px;
+    .views-field-body {
+      min-height: 85px;
+      text-align: justify;
+    }  
+    .views-field-field-news-mage {
+      @include img-hover();
+      margin-top: 10px;
+      .img-circle {
+        margin: 0 auto;
+      }
     }
-  }
-  .btn-default {
-    margin-bottom: 10px;
+    .btn-default {
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -222,9 +222,7 @@ h1, h2, h3, h4, h5, h6, span, p, a {
     }
   }
   .field-type-image {
-    img:hover {
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
+    @include img-hover();
   }
 }
 
@@ -290,12 +288,6 @@ h1, h2, h3, h4, h5, h6, span, p, a {
   }
   #comments {
     clear: both;
-  }
-}
-
-.node-gallery {
-  .field-name-field-gallery-image img:hover {
-     box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
 }
 
@@ -370,3 +362,41 @@ h1, h2, h3, h4, h5, h6, span, p, a {
     display: none;
   }
 }
+
+.content-bottom {
+  padding: 30px 0;
+  #block-views-portfolio-block-1 {
+    .view-portfolio {
+      .views-field-field-portfolio-image {
+        border: 1px solid #dddddd;
+        padding: 30px;
+        text-align: center;
+      }
+    }
+  }
+  #block-views-guest-book-block-1 {
+    min-height: 200px;
+    #views-bootstrap-carousel-1 {
+      -khtml-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      background: #f8f8f8 url('../images/quote.png') 12px 12px no-repeat;
+      border-radius: 3px;
+      border: 1px solid #e5e5e5;   
+      padding: 20px 20px 20px 60px;
+      position: relative;
+      .views-field-body {
+        font-size: 13px;
+        line-height: 20px;
+        font-style: italic;
+        color: #777;
+      }
+      .views-field-title {
+        display: inline;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
