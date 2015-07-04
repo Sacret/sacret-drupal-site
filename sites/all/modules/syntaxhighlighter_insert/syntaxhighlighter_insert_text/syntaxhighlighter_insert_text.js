@@ -43,7 +43,10 @@ Drupal.behaviors.SyntaxhighlighterInsertText = {
       if (title.length) content += 'title="' + title + '" ';
       content += '></' + tag + '>';
       wrapper.dialog('close');
-      Drupal.syntaxhighlighterinsert.insertAtCursor($('#' + Drupal.settings.syntaxhighlighter_insert.buttons[field]), content);
+      var pos = content.indexOf('</' + tag + '>');
+      var $field = $('#' + Drupal.settings.syntaxhighlighter_insert.buttons[field]);
+      Drupal.syntaxhighlighterinsert.insertAtCursor($field, content);
+      $field.setCursorToPos(pos);
       return false;
     }
 
@@ -67,6 +70,7 @@ Drupal.behaviors.SyntaxhighlighterDialog = {
 
     function openDialog() {
       var id = '#' + $(this).attr('id').replace('link', 'wrapper');
+      $(id + ' .description').hide();
       $(id).dialog('open');
       return false;
     }

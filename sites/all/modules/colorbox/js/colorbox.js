@@ -2,20 +2,26 @@
 
 Drupal.behaviors.initColorbox = {
   attach: function (context, settings) {
-    if (!$.isFunction($.colorbox)) {
+    if (!$.isFunction($.colorbox) || typeof settings.colorbox === 'undefined') {
       return;
     }
-    $('a, area, input', context)
-      .filter('.colorbox')
+
+    if (settings.colorbox.mobiledetect && window.matchMedia) {
+      // Disable Colorbox for small screens.
+      var mq = window.matchMedia("(max-device-width: " + settings.colorbox.mobiledevicewidth + ")");
+      if (mq.matches) {
+        return;
+      }
+    }
+
+    $('.colorbox', context)
       .once('init-colorbox')
       .colorbox(settings.colorbox);
+
+    $(context).bind('cbox_complete', function () {
+      Drupal.attachBehaviors('#cboxLoadedContent');
+    });
   }
 };
-
-{
-  $(document).bind('cbox_complete', function () {
-    Drupal.attachBehaviors('#cboxLoadedContent');
-  });
-}
 
 })(jQuery);

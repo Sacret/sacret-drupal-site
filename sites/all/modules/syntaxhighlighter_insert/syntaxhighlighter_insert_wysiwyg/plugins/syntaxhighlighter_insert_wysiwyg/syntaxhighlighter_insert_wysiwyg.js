@@ -35,18 +35,19 @@ Drupal.wysiwyg.plugins.syntaxhighlighter_insert_wysiwyg = {
 
 
   insert_form: function (data, settings, instanceId) {
-    form_id = Drupal.settings.syntaxhighlighter_insert_wysiwyg.current_form;
+    Drupal.syntaxhighlighterinsert.hideDescriptions();
+    var form_id = Drupal.settings.syntaxhighlighter_insert_wysiwyg.current_form;
 
     // Location, where to fetch the dialog.
     var aurl = Drupal.settings.basePath + 'index.php?q=syntaxhighlighter_insert_wysiwyg/insert/' + form_id;
-    dialogdiv = jQuery('<div id="syntaxhighlighter-insert-dialog"></div>');
-    dialogdiv.load(aurl + " .content #syntaxhighlighter-insert-wysiwyg-form", function(){
+    var dialogdiv = jQuery('<div id="syntaxhighlighter-insert-dialog"></div>');
+    dialogdiv.load(aurl + " #syntaxhighlighter-insert-wysiwyg-form", function(){
       var dialogClose = function () {
         try {
           dialogdiv.dialog('destroy').remove();
         } catch (e) {};
       };
-      btns = {};
+      var btns = {};
       btns[Drupal.t('Insert syntaxhighlighter tag')] = function () {
 
         var editor_id = instanceId;
@@ -78,9 +79,12 @@ Drupal.wysiwyg.plugins.syntaxhighlighter_insert_wysiwyg = {
         content += 'toolbar: ' + new Boolean(toolbar).toString() + '; ';
         content += 'codetag" ';
         if (title.length) content += 'title="' + title + '" ';
-        content += '> ' + Drupal.t('Type your code in the box.') + ' </' + tag + '>';
+        var message = Drupal.t('Type your code in the box. To create a new line within the box use SHIFT + ENTER.');
+        content += ' id="shinsert-current-tag"> ' + message + ' </' + tag + '>';
         Drupal.wysiwyg.plugins.syntaxhighlighter_insert_wysiwyg.insertIntoEditor(content, editor_id);
         jQuery(this).dialog("close");
+        Drupal.wysiwyg.plugins.syntaxhighlighter_insert_wysiwyg.selectTagContents(editor_id);
+
 
       };
 
@@ -103,11 +107,36 @@ Drupal.wysiwyg.plugins.syntaxhighlighter_insert_wysiwyg = {
         close: dialogClose
       });
       dialogdiv.dialog("open");
+      $('#syntaxhighlighter-insert-wysiwyg-form .description').hide();
     });
   },
 
   insertIntoEditor: function (syntaxhighlighter, editor_id) {
     Drupal.wysiwyg.instances[editor_id].insert(syntaxhighlighter);
+  },
+  selectTagContents: function(editor_id) {
+    if (typeof Drupal.wysiwyg == 'undefined') {
+      // nothing to do here.
+      return;
+    }
+    var tag, rng
+    switch (Drupal.wysiwyg.instances[editor_id].editor) {
+      case 'tinymce':
+        rng = tinyMCE.activeEditor.dom.createRng();
+        tag = tinyMCE.activeEditor.dom.select('#shinsert-current-tag')[0];
+        rng.selectNodeContents(tinyMCE.activeEditor.selection.select(tag));
+        tinyMCE.activeEditor.selection.setRng(rng);
+        // append an empty tag so you can get out of the syntaxhighlighter tags (editor specific)
+        tinyMCE.activeEditor.dom.setOuterHTML('shinsert-current-tag', $(tag).removeAttr('id').clone().wrapAll("<div />").parent().html() + '<p></p>');
+        break;
+      case 'ckeditor':
+        rng = new CKEDITOR.dom.range(CKEDITOR.currentInstance.document);
+        tag = CKEDITOR.currentInstance.document.getById('shinsert-current-tag');
+        rng.selectNodeContents(tag);
+        CKEDITOR.currentInstance.getSelection().selectRanges([rng]);
+        tag.removeAttribute('id');
+        break;
+    }
   },
 
   /**

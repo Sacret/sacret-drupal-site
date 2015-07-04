@@ -32,7 +32,7 @@ Drupal.syntaxhighlighterinsert = {
   },
 
   hideDescriptions: function() {
-    var descriptions_hidden = false;
+    var descriptions_hidden = true;
     jQuery('.syntaxhighlighter-insert-text-description-link, .syntaxhighlighter-insert-wysiwyg-description-link').live('click', function() {
       var link = jQuery(this);
       var id = link.attr('id');

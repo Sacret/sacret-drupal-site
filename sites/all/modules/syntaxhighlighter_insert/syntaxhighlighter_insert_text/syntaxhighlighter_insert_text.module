@@ -37,10 +37,8 @@ function syntaxhighlighter_insert_text_add_contenttype($form, &$form_state) {
 }
 
 function syntaxhighlighter_insert_text_post_render($content, $element) {
-
   if (isset($element['#entity_type']) && isset($element['#bundle'])) {
     if (variable_get('syntaxhighlighter_insert_' . $element['#entity_type'] . '_' . $element['#bundle'] . '_' . $element['#field_name'], 0) == 1) {
-      drupal_add_js(drupal_get_path('module', 'syntaxhighlighter_insert') . '/syntaxhighlighter_insert.js');
       drupal_add_js(drupal_get_path('module', 'syntaxhighlighter_insert_text') . '/syntaxhighlighter_insert_text.js');
       if (!isset($element['summary'])) {
         $contentarray = syntaxhighlighter_insert_text_form($element);

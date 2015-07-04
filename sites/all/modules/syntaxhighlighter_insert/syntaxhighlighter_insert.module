@@ -36,13 +36,20 @@ EOT;
 
 }
 
+/**
+ * Implements hook_form_alter().
+ */
+function syntaxhighlighter_insert_form_alter(&$form) {
+  drupal_add_js(drupal_get_path('module', 'syntaxhighlighter_insert') . '/syntaxhighlighter_insert.utils.js', array('group' => JS_LIBRARY, 'weight' => -2));
+  drupal_add_js(drupal_get_path('module', 'syntaxhighlighter_insert') . '/syntaxhighlighter_insert.js', array('group' => JS_LIBRARY, 'weight' => -1));
+}
+
 function syntaxhighlighter_insert_base_form(&$form, $name = 'wysiwyg') {
   $type = ($name == 'wysiwyg') ? 'wysiwyg' : 'text';
-  drupal_add_js(drupal_get_path('module', 'syntaxhighlighter_insert') . '/syntaxhighlighter_insert.js');
   $form["syntaxhighlighter_insert_{$type}_description_link"] = array(
     '#type' => 'markup',
     '#markup' => l(
-      t('Hide descriptions'),
+      t('Show descriptions'),
       '#',
       array(
         'attributes' => array(
@@ -71,14 +78,8 @@ function syntaxhighlighter_insert_base_form(&$form, $name = 'wysiwyg') {
     return array();
   }
 
-  $autoloader_available = file_exists($path . '/scripts/shAutoloader.js');
-
-  $files = file_scan_directory($path . '/scripts', '/shBrush.*\.js/');
-  foreach ($files as $file) {
-    $lang_options[$file->filename] = substr($file->name, 7);
-  }
-  ksort($lang_options);
-  $lang_options = array_map('strtoupper', array_change_key_case(drupal_map_assoc(array_values($lang_options))));
+  $brushes = array_filter(variable_get('syntaxhighlighter_enabled_languages', array('shBrushPhp.js')));
+  $lang_options = _syntaxhighlighter_insert_brushes_to_options($brushes);
   $form["syntaxhighlighter_insert_{$type}_brush"] = array(
     '#type' => 'select',
     '#title' => t('Brush'),
@@ -183,4 +184,13 @@ function syntaxhighlighter_insert_base_form(&$form, $name = 'wysiwyg') {
       'value' => array(variable_get('syntaxhighlighter_tagname', 'pre')),
     ),
   );
+}
+
+function _syntaxhighlighter_insert_brushes_to_options($brushes) {
+  $keys = array_map('_syntaxhighlighter_brush_option_key', $brushes);
+  return array_map('strtoupper', array_change_key_case(drupal_map_assoc(array_values($keys))));
+}
+
+function _syntaxhighlighter_brush_option_key($brush) {
+  return strtolower(substr(basename($brush, '.js'), 7));
 }
