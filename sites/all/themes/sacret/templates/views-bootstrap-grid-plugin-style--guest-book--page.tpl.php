@@ -16,13 +16,29 @@
 <div id="views-bootstrap-grid-<?php print $id ?>" class="<?php print $classes ?>">
   <?php $count = db_select('node', 'n')->fields('n')->condition('type', 'guest_book')->execute()->rowCount(); ?>
   <h2 class="page-header">Записей в гостевой книге: <?php print $count; ?></h2>
-  <?php foreach ($columns as $column): ?>
+  <?php if ($options['alignment'] == 'horizontal'): ?>
+
+    <?php foreach ($items as $row): ?>
+      <div class="row">
+        <?php foreach ($row['content'] as $column): ?>
+          <div class="col col-lg-<?php print $column_type ?>">
+            <?php print $column['content'] ?>
+          </div>
+        <?php endforeach ?>
+      </div>
+    <?php endforeach ?>
+
+  <?php else: ?>
+
     <div class="row">
-      <?php foreach ($column as $key => $row): ?>
+      <?php foreach ($items as $column): ?>
         <div class="col col-lg-<?php print $column_type ?>">
-          <?php print $row ?>
+          <?php foreach ($column['content'] as $row): ?>
+            <?php print $row['content'] ?>
+          <?php endforeach ?>
         </div>
       <?php endforeach ?>
     </div>
-  <?php endforeach ?>
+
+  <?php endif ?>
 </div>
